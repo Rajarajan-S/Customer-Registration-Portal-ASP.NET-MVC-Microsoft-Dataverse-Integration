@@ -7,9 +7,9 @@ namespace CustomerRegistrationPortal.Services
     {
         private readonly string connectionString =
         "AuthType=ClientSecret;" +
-        "Url=https://orgeb829a97.crm8.dynamics.com;" +
-        "ClientId=d125abd9-88ef-41a7-a0f2-444efecc79f2;" +
-        "ClientSecret=MTz8Q~IO3K_zEWMmhQcPv1mIElCRvHEs4DW7Lade;";
+        "Url=https://orgURL;" +
+        "ClientId=CLIENT_ID;" +
+        "ClientSecret=CLIENT_SECRET;";
 
         public void CreateRegistrationRecord(
         string firstName,
