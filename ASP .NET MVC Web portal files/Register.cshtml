@@ -1,0 +1,208 @@
+@model CustomerRegistrationPortal.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Customer Registration";
+}
+
+<div class="registration-wrapper">
+    <div class="registration-box">
+        <h2>Customer Registration</h2>
+        <p class="form-subtitle">Please enter your details below.</p>
+
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert alert-success">
+                @ViewBag.Message
+            </div>
+        }
+
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.ErrorMessage
+            </div>
+        }
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName, new
+                {
+                    @class = "form-control",
+                    placeholder = "Enter first name"
+                })
+                @Html.ValidationMessageFor(m => m.FirstName, "", new
+                {
+                    @class = "text-danger"
+                })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.LastName)
+                @Html.TextBoxFor(m => m.LastName, new
+                {
+                    @class = "form-control",
+                    placeholder = "Enter last name"
+                })
+                @Html.ValidationMessageFor(m => m.LastName, "", new
+                {
+                    @class = "text-danger"
+                })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new
+                {
+                    @class = "form-control",
+                    type = "email",
+                    placeholder = "Enter email address"
+                })
+                @Html.ValidationMessageFor(m => m.Email, "", new
+                {
+                    @class = "text-danger"
+                })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Phone)
+                @Html.TextBoxFor(m => m.Phone, new
+                {
+                    @class = "form-control",
+                    type = "tel",
+                    placeholder = "Enter phone number"
+                })
+                @Html.ValidationMessageFor(m => m.Phone, "", new
+                {
+                    @class = "text-danger"
+                })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Address)
+                @Html.TextAreaFor(m => m.Address, new
+                {
+                    @class = "form-control",
+                    rows = 3,
+                    placeholder = "Enter address"
+                })
+                @Html.ValidationMessageFor(m => m.Address, "", new
+                {
+                    @class = "text-danger"
+                })
+            </div>
+
+            <button type="submit" class="btn btn-register">
+                Register
+            </button>
+        }
+    </div>
+</div>
+
+<style>
+    .registration-wrapper {
+        min-height: 80vh;
+        padding: 40px 15px;
+        background-color: #f5f5f5;
+    }
+
+    .registration-box {
+        max-width: 520px;
+        padding: 30px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border: 1px solid #dddddd;
+        border-radius: 6px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+        .registration-box h2 {
+            margin: 0 0 8px;
+            color: #333333;
+            text-align: center;
+        }
+
+    .form-subtitle {
+        margin-bottom: 25px;
+        color: #777777;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #333333;
+            font-weight: 600;
+        }
+
+    .form-control {
+        width: 100%;
+        min-height: 42px;
+        padding: 9px 12px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+    }
+
+    .form-control:focus {
+        border-color: #80bdff;
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+    }
+
+    .text-danger {
+        display: block;
+        margin-top: 5px;
+        color: #dc3545;
+        font-size: 13px;
+    }
+
+    .btn-register {
+        width: 100%;
+        padding: 11px;
+        color: #ffffff;
+        background-color: #337ab7;
+        border: 1px solid #2e6da4;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        .btn-register:hover {
+            background-color: #286090;
+        }
+
+    .alert {
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+    }
+
+    .alert-success {
+        color: #3c763d;
+        background-color: #dff0d8;
+        border: 1px solid #d6e9c6;
+    }
+
+    .alert-danger {
+        color: #a94442;
+        background-color: #f2dede;
+        border: 1px solid #ebccd1;
+    }
+</style>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
